@@ -12,12 +12,7 @@
 
   <!-- Dependencies -->
   <dependencies>
-    <dependency>
-      <groupId>org.teavm</groupId>
-      <artifactId>teavm-classlib</artifactId>
-      
-      <scope>provided</scope>
-    </dependency>
+    
   </dependencies>
 
   <!-- Build configuration -->
