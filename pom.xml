@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
+
+  <!-- Project coordinates -->
   <groupId>com.mcnz</groupId>
   <artifactId>java-in-the-browser</artifactId>
   <version>1.0.0</version>
   <packaging>war</packaging>
 
-
-
+  <!-- Dependencies -->
   <dependencies>
     <dependency>
       <groupId>org.teavm</groupId>
@@ -17,8 +20,10 @@
     </dependency>
   </dependencies>
 
+  <!-- Build configuration -->
   <build>
     <plugins>
+      <!-- Maven Compiler Plugin -->
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.9.0</version>
@@ -28,19 +33,21 @@
         </configuration>
       </plugin>
 
+      <!-- Maven WAR Plugin -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
         <version>3.3.2</version>
         <configuration>
-	<webResources>
-	<resource>
-	<directory>${project.build.directory}/webapp</directory>
-	</resource>
-	</webResources>
-	</configuration>
+          <webResources>
+            <resource>
+              <directory>${project.build.directory}/webapp</directory>
+            </resource>
+          </webResources>
+        </configuration>
       </plugin>
 
+      <!-- TeaVM Plugin -->
       <plugin>
         <groupId>org.teavm</groupId>
         <artifactId>teavm-maven-plugin</artifactId>
@@ -62,6 +69,7 @@
         </executions>
       </plugin>
 
+      <!-- Exec Maven Plugin -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
@@ -77,7 +85,7 @@
         <configuration>
           <includePluginDependencies>true</includePluginDependencies>
           <mainClass>fi.iki.elonen.SimpleWebServer</mainClass>
-           <arguments>
+          <arguments>
             <argument>-d</argument>
             <argument>${project.build.directory}/${project.build.finalName}</argument>
           </arguments>
@@ -85,8 +93,8 @@
         <dependencies>
           <dependency>
             <groupId>org.nanohttpd</groupId>
-	          <artifactId>nanohttpd-webserver</artifactId>
-	          <version>2.3.1</version>
+            <artifactId>nanohttpd-webserver</artifactId>
+            <version>2.3.1</version>
           </dependency>
         </dependencies>
       </plugin>
